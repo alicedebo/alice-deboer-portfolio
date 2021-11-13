@@ -7,16 +7,16 @@ export default function Topbar({ menuOpen, setMenuOpen }) {
                 <div className="left">
                     <a href="#intro" className="logo">About Alice</a>
                     <div className="itemContainer">
-                    <span class="material-icons icon">call</span>
+                    <span className="material-icons icon">call</span>
                     <span>555-5555</span>
                     </div>
                     <div className="itemContainer">
-                    <span class="material-icons icon">email</span>
+                    <span className="material-icons icon">email</span>
                     <span>arichardel@gmail.com</span>
                     </div>
                     <div className="itemContainer">
-                    <span class="material-icons icon">pets</span>
-                    <a className="link" href="https://github.com/alicedebo" target="_blank">GitHub</a>
+                    <span className="material-icons icon">pets</span>
+                    <a className="link" href="https://github.com/alicedebo">GitHub</a>
                     </div>
                 </div>
                 <div className="right">
