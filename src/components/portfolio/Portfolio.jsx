@@ -1,15 +1,24 @@
 import "./portfolio.scss"
-import one from "../../images/one.png";
-import two from "../../images/two.png";
-import three from "../../images/three.png";
-import four from "../../images/four.png";
-import five from "../../images/five.png";
-import six from "../../images/six.png";
+// import one from "../../images/one.png";
+// import two from "../../images/two.png";
+// import three from "../../images/three.png";
+// import four from "../../images/four.png";
+// import five from "../../images/five.png";
+// import six from "../../images/six.png";
 import PortfolioList from "../portfolioList/PortfolioList";
 import { useEffect, useState } from "react";
+import {
+    recipeGenerator, 
+    noteTaker,
+    teamProfileGenerator,
+    readMeGenerator,
+    weatherDashboard,
+    codingQuiz
+} from "../../data"
 
 export default function Portfolio() {
-    const [selected, setSelected] = useState("featured")
+    const [selected, setSelected] = useState("recipeGenerator")
+    const [data, setdata] = useState([])
     const list = [
         {
             id: "Recipe Generator",
@@ -36,6 +45,31 @@ export default function Portfolio() {
             title: "Coding Quiz",
         }
     ]
+
+    useEffect(() => {
+        switch(selected){
+            case "Recipe Generator":
+                setdata(recipeGenerator);
+                break;
+            case "Note Taker":
+                setdata(noteTaker);
+                break;
+            case "Team Profile Generator":
+                setdata(teamProfileGenerator);
+                break;
+            case "ReadMe Generator":
+                setdata(readMeGenerator);
+                break;
+            case "Weather Dashboard":
+                setdata(weatherDashboard);
+                break;
+            case "Coding Quiz":
+                setdata(codingQuiz);
+                break;
+                default:
+                    setdata(recipeGenerator)
+        }
+    },[selected])
     return (
         <div className="portfolio" id="portfolio">
             <h1>Portfolio</h1>
@@ -50,30 +84,13 @@ export default function Portfolio() {
                 ))}
             </ul>
             <div className="container">
-                <div className="item">
-                    <img src={one} alt="" />
-                    <h3>Recipe Generator</h3>
-                </div>
-                <div className="item">
-                    <img src={two} alt="" />
-                    <h3>Note Taker</h3>
-                </div>
-                <div className="item">
-                    <img src={three} alt="" />
-                    <h3>Team Profile Generator</h3>
-                </div>
-                <div className="item">
-                    <img src={four} alt="" />
-                    <h3>ReadMe Generator</h3>
-                </div>
-                <div className="item">
-                    <img src={five} alt="" />
-                    <h3>Weather Dashboard</h3>
-                </div>
-                <div className="item">
-                    <img src={six} alt="" />
-                    <h3>Coding Quiz</h3>
-                </div>
+                {data.map(d=>(
+                  <div className="item">
+                    <img src={d.img} alt="" />
+                    <h3>{d.title}</h3>
+                </div>  
+                ))}
+                
             </div>
         </div>
     )
